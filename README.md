@@ -4,7 +4,7 @@ An AI-powered resume builder that tailors your resume to any job description usi
 
 ![Dark mode UI with dark grey and red accent](https://img.shields.io/badge/UI-Dark%20Mode-18181b?style=flat&labelColor=18181b&color=dc2626)
 ![Built with React](https://img.shields.io/badge/React-Vite-61dafb?style=flat&logo=react)
-![Powered by Claude](https://img.shields.io/badge/AI-Claude%20Sonnet-cc785c?style=flat)
+![Powered by Claude](https://img.shields.io/badge/AI-Claude%20Opus%204.8-cc785c?style=flat)
 
 ---
 
@@ -51,7 +51,7 @@ Download the PDF directly in the browser. Generate a tailored **cover letter** v
 | Styling | Tailwind CSS v4 |
 | Drag & drop | @dnd-kit/core + @dnd-kit/sortable |
 | PDF generation | @react-pdf/renderer |
-| AI | Anthropic Claude (`claude-sonnet-4-20250514`) via direct fetch |
+| AI | Anthropic Claude (`claude-opus-4-8`) via direct fetch |
 
 ---
 
