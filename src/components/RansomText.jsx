@@ -2,11 +2,16 @@
 // rotated a touch, in the Lacquer display font.
 const BLOCKS = ['#ffffff', 'var(--accent-lime)', '#ffffff', 'var(--accent)'];
 
-export default function RansomText({ text, className = '' }) {
+export default function RansomText({ text, className = '', nowrap = false }) {
   let letterIndex = -1;
 
   return (
-    <div className={`ransom ${className}`} aria-label={text} role="heading">
+    <div
+      className={`ransom ${className}`}
+      style={nowrap ? { flexWrap: 'nowrap', gap: '4px 2px' } : undefined}
+      aria-label={text}
+      role="heading"
+    >
       {[...text].map((ch, i) => {
         if (ch === ' ') return <span key={i} className="ransom-gap" />;
 

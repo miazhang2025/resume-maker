@@ -13,7 +13,7 @@ export default function Sidebar({ currentStep, onStepClick, completedSteps, onHo
   return (
     <aside className="w-56 min-h-screen bg-zinc-950/85 backdrop-blur flex flex-col py-8 px-4 shrink-0 border-r-2 border-zinc-800">
       <button onClick={onHome} className="mb-10 px-2 text-left group">
-        <RansomText text="Fk Resume" className="text-xl leading-none group-hover:opacity-90 transition-opacity" />
+        <RansomText text="Fk Resume" nowrap className="text-base leading-none group-hover:opacity-90 transition-opacity" />
         <p className="text-zinc-600 text-[11px] mt-2 uppercase tracking-widest">One résumé per role</p>
       </button>
 

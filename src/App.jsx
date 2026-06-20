@@ -100,8 +100,20 @@ export default function App() {
         completedSteps={completedSteps}
         onHome={() => setStarted(false)}
       />
-      <main className="flex-1 px-10 py-10 overflow-auto">
-        {renderStep()}
+      <main className="relative flex-1 overflow-auto">
+        {/* Faint punk decorations sitting behind the content */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden halftone">
+          <img src="/asset/element 09.svg" alt="" aria-hidden="true"
+            className="tint-magenta absolute -right-16 top-10 w-96 rotate-12 opacity-[0.28]" />
+          <img src="/asset/element 05.svg" alt="" aria-hidden="true"
+            className="tint-lime absolute right-24 bottom-24 w-72 -rotate-6 opacity-[0.28]" />
+          <img src="/asset/element 03.svg" alt="" aria-hidden="true"
+            className="absolute left-1/2 bottom-10 w-56 rotate-3 opacity-[0.22]" />
+        </div>
+
+        <div className="relative z-10 px-10 py-10">
+          {renderStep()}
+        </div>
       </main>
     </div>
   );
