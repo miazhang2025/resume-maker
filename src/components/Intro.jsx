@@ -3,8 +3,8 @@ import RansomText from './RansomText';
 const STEPS = [
   {
     n: '01',
-    title: 'Drop your experience',
-    body: 'Upload one JSON file with everything you have ever done. No file? Grab the sample and fill it in.',
+    title: 'Drop your résumé PDF',
+    body: 'Upload your existing résumé. Claude reads it into structured data and asks you to fill in anything missing.',
   },
   {
     n: '02',
