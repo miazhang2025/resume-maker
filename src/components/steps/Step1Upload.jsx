@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { downloadSampleJson } from '../../utils/sampleData';
+import RansomText from '../RansomText';
 
 function ValidationError({ errors }) {
   if (!errors.length) return null;
@@ -133,7 +134,7 @@ export default function Step1Upload({ onComplete, initialData }) {
   return (
     <div className="max-w-2xl">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-zinc-100">Upload Your Resume Data</h2>
+        <RansomText text="Upload Your Resume Data" className="text-3xl" />
         <p className="text-zinc-500 mt-1 text-sm">
           Upload a JSON file with your resume data. We'll use it to tailor bullets for your target job.
         </p>

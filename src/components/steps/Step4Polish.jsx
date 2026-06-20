@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { polishBullets, rephraseSingleBullet } from '../../api/claude';
+import RansomText from '../RansomText';
 
 function Spinner({ small }) {
   return (
@@ -234,7 +235,7 @@ export default function Step4Polish({ onComplete, onBack, jdData, selectionData,
   if (loading) {
     return (
       <div className="max-w-2xl">
-        <h2 className="text-2xl font-bold text-zinc-100 mb-8">Polish Content</h2>
+        <RansomText text="Polish Content" className="text-3xl mb-8" />
         <div className="flex flex-col items-center py-24 gap-4">
           <div className="w-10 h-10 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
           <p className="text-zinc-300 font-medium">Polishing your bullets…</p>
@@ -250,7 +251,7 @@ export default function Step4Polish({ onComplete, onBack, jdData, selectionData,
   if (error && !bullets.length) {
     return (
       <div className="max-w-2xl">
-        <h2 className="text-2xl font-bold text-zinc-100 mb-8">Polish Content</h2>
+        <RansomText text="Polish Content" className="text-3xl mb-8" />
         <div className="p-5 bg-red-950/40 border border-red-900 rounded-xl">
           <p className="text-red-300 font-semibold mb-1">Error</p>
           <p className="text-red-400 text-sm font-mono mb-4">{error}</p>
@@ -285,7 +286,7 @@ export default function Step4Polish({ onComplete, onBack, jdData, selectionData,
   return (
     <div className="max-w-2xl">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-zinc-100">Polish Content</h2>
+        <RansomText text="Polish Content" className="text-3xl" />
         <p className="text-zinc-500 mt-1 text-sm">
           Claude rewrote your bullets to match the role. Edit, rewrite individually, or re-polish all with feedback.
         </p>

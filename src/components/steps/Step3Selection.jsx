@@ -17,6 +17,7 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { scoreRelevance } from '../../api/claude';
+import RansomText from '../RansomText';
 
 const AI_THRESHOLD = 0.55;
 
@@ -265,7 +266,7 @@ export default function Step3Selection({ onComplete, onBack, resumeData, jdData,
   if (loading) {
     return (
       <div className="max-w-2xl">
-        <h2 className="text-2xl font-bold text-zinc-100 mb-8">Select Bullets</h2>
+        <RansomText text="Select Bullets" className="text-3xl mb-8" />
         <div className="flex flex-col items-center py-24 gap-4">
           <div className="w-10 h-10 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
           <p className="text-zinc-300 font-medium">Analyzing job description…</p>
@@ -281,7 +282,7 @@ export default function Step3Selection({ onComplete, onBack, resumeData, jdData,
   if (error) {
     return (
       <div className="max-w-2xl">
-        <h2 className="text-2xl font-bold text-zinc-100 mb-8">Select Bullets</h2>
+        <RansomText text="Select Bullets" className="text-3xl mb-8" />
         <div className="p-6 bg-red-50 border border-red-200 rounded-xl">
           <p className="text-red-800 font-semibold mb-1">Claude API error</p>
           <p className="text-red-600 text-sm font-mono mb-4">{error}</p>
@@ -311,7 +312,7 @@ export default function Step3Selection({ onComplete, onBack, resumeData, jdData,
   return (
     <div className="max-w-2xl">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-zinc-100">Select Bullets</h2>
+        <RansomText text="Select Bullets" className="text-3xl" />
         <p className="text-zinc-500 mt-1 text-sm">
           Claude scored each bullet for this role.{' '}
           <span className="text-red-400 font-medium inline-flex items-center gap-0.5">

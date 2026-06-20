@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 import ResumePDF from '../ResumePDF';
 import { generateCoverLetter } from '../../api/claude';
+import RansomText from '../RansomText';
 
 const PRESETS = [
   { label: 'Charcoal', value: '#1f2937' },
@@ -235,7 +236,7 @@ export default function Step6Export({ onBack, resumeData, jdData, selectionData,
       {/* Left controls */}
       <div className="shrink-0">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-zinc-100">Export PDF</h2>
+          <RansomText text="Export PDF" className="text-3xl" />
           <p className="text-zinc-500 mt-1 text-sm">Customize the look, then download.</p>
         </div>
         <ControlPanel

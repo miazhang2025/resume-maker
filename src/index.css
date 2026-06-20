@@ -1,14 +1,35 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ *
+ * Punk theme — remap Tailwind's red scale to hot magenta so every
+ * existing `*-red-*` utility instantly becomes the new accent.
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-red-300: #ff9ecb;
+  --color-red-400: #ff5fa8;
+  --color-red-500: #ff2e8f;
+  --color-red-600: #e6007e;
+  --color-red-700: #c2005f;
+  --color-red-900: #5e002f;
+  --color-red-950: #2e0018;
+}
+
+:root {
+  --accent: #e6007e;     /* hot magenta */
+  --accent-lime: #ccff00; /* acid lime   */
+  --ink: #0a0a0a;        /* block text  */
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #18181b;
-  color: #e4e4e7;
+  font-family: 'Geist Mono', ui-monospace, 'SFMono-Regular', monospace;
+  background: #0a0a0a;
+  color: #e7e5e4;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
@@ -16,18 +37,68 @@ body {
   min-height: 100vh;
 }
 
-/* Dark scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* ------------------------------------------------------------------ *
+ * Ransom-note headings — Lacquer font, each letter on its own block.
+ * ------------------------------------------------------------------ */
+.ransom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 4px;
+  font-family: 'Lacquer', system-ui, cursive;
+  font-weight: 400;
+  line-height: 1;
 }
-::-webkit-scrollbar-track {
-  background: #27272a;
+.ransom-char {
+  display: inline-block;
+  padding: 0.06em 0.16em 0.14em;
+  color: var(--ink);
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6);
 }
-::-webkit-scrollbar-thumb {
-  background: #52525b;
-  border-radius: 3px;
+.ransom-gap {
+  width: 0.38em;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #71717a;
+
+/* ------------------------------------------------------------------ *
+ * Punk surface treatments
+ * ------------------------------------------------------------------ */
+.app-glow {
+  background:
+    radial-gradient(820px 460px at -5% -10%, rgba(230, 0, 126, 0.16), transparent 60%),
+    radial-gradient(680px 560px at 105% 110%, rgba(204, 255, 0, 0.10), transparent 55%),
+    #0a0a0a;
 }
+
+/* halftone dot grid for grungy texture */
+.halftone {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1.4px);
+  background-size: 14px 14px;
+}
+
+.sticker {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.9;
+}
+
+/* tint the white SVG stickers to the accent / lime */
+.tint-magenta {
+  filter: brightness(0) saturate(100%) invert(23%) sepia(98%) saturate(5800%) hue-rotate(312deg) brightness(95%) contrast(105%);
+}
+.tint-lime {
+  filter: brightness(0) saturate(100%) invert(92%) sepia(64%) saturate(1200%) hue-rotate(20deg) brightness(105%) contrast(105%);
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.animate-wiggle { animation: wiggle 4s ease-in-out infinite; }
+
+/* Dark punk scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #161616; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-lime); }

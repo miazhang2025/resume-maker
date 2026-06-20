@@ -15,6 +15,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import RansomText from '../RansomText';
 import { recommendSkills } from '../../api/claude';
 
 function GripIcon() {
@@ -228,7 +229,7 @@ export default function Step5Skills({ onComplete, onBack, resumeData, jdData, se
   if (loading) {
     return (
       <div className="max-w-2xl">
-        <h2 className="text-2xl font-bold text-zinc-100 mb-8">Skills</h2>
+        <RansomText text="Skills" className="text-3xl mb-8" />
         <div className="flex flex-col items-center py-24 gap-4">
           <div className="w-10 h-10 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
           <p className="text-zinc-300 font-medium">Recommending skills…</p>
@@ -244,7 +245,7 @@ export default function Step5Skills({ onComplete, onBack, resumeData, jdData, se
   return (
     <div className="max-w-2xl">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-zinc-100">Skills</h2>
+        <RansomText text="Skills" className="text-3xl" />
         <p className="text-zinc-500 mt-1 text-sm">
           Claude recommended these skill groups. Drag to reorder, click category name to rename, add or remove skills.
         </p>

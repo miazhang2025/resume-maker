@@ -1,3 +1,5 @@
+import RansomText from './RansomText';
+
 const STEPS = [
   { number: 1, label: 'Upload Resume' },
   { number: 2, label: 'Job Description' },
@@ -7,13 +9,13 @@ const STEPS = [
   { number: 6, label: 'Export PDF' },
 ];
 
-export default function Sidebar({ currentStep, onStepClick, completedSteps }) {
+export default function Sidebar({ currentStep, onStepClick, completedSteps, onHome }) {
   return (
-    <aside className="w-56 min-h-screen bg-zinc-950 flex flex-col py-8 px-4 shrink-0 border-r border-zinc-800">
-      <div className="mb-10 px-2">
-        <h1 className="text-white text-base font-semibold tracking-tight">Resume AI</h1>
-        <p className="text-zinc-600 text-xs mt-0.5">Tailored for every role</p>
-      </div>
+    <aside className="w-56 min-h-screen bg-zinc-950/85 backdrop-blur flex flex-col py-8 px-4 shrink-0 border-r-2 border-zinc-800">
+      <button onClick={onHome} className="mb-10 px-2 text-left group">
+        <RansomText text="Fk Resume" className="text-xl leading-none group-hover:opacity-90 transition-opacity" />
+        <p className="text-zinc-600 text-[11px] mt-2 uppercase tracking-widest">One résumé per role</p>
+      </button>
 
       <nav className="flex flex-col gap-0.5">
         {STEPS.map((step) => {

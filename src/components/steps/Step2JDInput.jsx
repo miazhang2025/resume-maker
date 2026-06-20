@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import RansomText from '../RansomText';
 
 const JD_PLACEHOLDER = `Paste the full job description here...
 
@@ -15,7 +16,7 @@ export default function Step2JDInput({ onComplete, onBack, initialData }) {
   return (
     <div className="max-w-2xl">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-zinc-100">Paste Job Description</h2>
+        <RansomText text="Paste Job Description" className="text-3xl" />
         <p className="text-zinc-500 mt-1 text-sm">
           Claude will analyze the JD to select and tailor your resume bullets.
         </p>

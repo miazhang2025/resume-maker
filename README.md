@@ -1,4 +1,4 @@
-# Resume AI
+# Fk Resume
 
 An AI-powered resume builder that tailors your resume to any job description using Claude. Upload your experience once, paste a job posting, and get a polished, targeted resume in minutes.
 

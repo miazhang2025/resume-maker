@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Intro from './components/Intro';
 import Sidebar from './components/Sidebar';
 import Step1Upload from './components/steps/Step1Upload';
 import Step2JDInput from './components/steps/Step2JDInput';
@@ -8,6 +9,7 @@ import Step5Skills from './components/steps/Step5Skills';
 import Step6Export from './components/steps/Step6Export';
 
 export default function App() {
+  const [started, setStarted] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [completedSteps, setCompletedSteps] = useState([]);
 
@@ -86,12 +88,17 @@ export default function App() {
     }
   }
 
+  if (!started) {
+    return <Intro onStart={() => setStarted(true)} />;
+  }
+
   return (
-    <div className="flex min-h-screen bg-zinc-900">
+    <div className="flex min-h-screen app-glow">
       <Sidebar
         currentStep={currentStep}
         onStepClick={setCurrentStep}
         completedSteps={completedSteps}
+        onHome={() => setStarted(false)}
       />
       <main className="flex-1 px-10 py-10 overflow-auto">
         {renderStep()}
