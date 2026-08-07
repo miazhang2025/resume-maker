@@ -51,7 +51,7 @@ Download the PDF directly in the browser. Generate a tailored **cover letter** v
 | Styling | Tailwind CSS v4 |
 | Drag & drop | @dnd-kit/core + @dnd-kit/sortable |
 | PDF generation | @react-pdf/renderer |
-| AI | Anthropic Claude (`claude-opus-4-8`) via direct fetch |
+| AI | Anthropic Claude (`claude-opus-4-8`) via a serverless function |
 
 ---
 
@@ -70,12 +70,24 @@ npm install
 Create a `.env.local` file in the project root:
 
 ```
-VITE_ANTHROPIC_API_KEY=sk-ant-...
+ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 Get a key at [console.anthropic.com](https://console.anthropic.com/).
 
-> **Note:** The API key is used directly from the browser. This is intentional for a local dev tool — never deploy this publicly with your key exposed.
+> **The variable name matters.** Vite inlines any `VITE_`-prefixed variable into
+> the client bundle as plaintext, so a key named `VITE_ANTHROPIC_API_KEY` would be
+> published to anyone who downloads the site's JavaScript. Without the prefix it
+> stays on the server and is read only by `api/claude.js`. Do not rename it.
+
+When deploying, set the same un-prefixed `ANTHROPIC_API_KEY` in your host's
+environment variables (on Vercel: Settings → Environment Variables).
+
+> **The `/api/claude` endpoint spends your API credits.** It never exposes the
+> key, but it is unauthenticated — anyone who can reach the deployed site can run
+> the seven résumé tasks on your account. Keep the deployment behind access
+> control (on Vercel: Settings → Deployment Protection, scoped to *all*
+> deployments, not previews only), or add your own auth check to the handler.
 
 ### 3. Run
 
@@ -168,9 +180,12 @@ Download a full example from the app (Step 1 → *Download sample JSON*), or fol
 ## Project structure
 
 ```
+api/
+└── claude.js               # Serverless function: prompts, model, API key (server-only)
+
 src/
 ├── api/
-│   └── claude.js          # All Claude API calls (score, polish, skills, cover letter)
+│   └── claude.js          # Thin fetch client for /api/claude — no key, no prompts
 ├── components/
 │   ├── Sidebar.jsx         # Step navigation
 │   ├── ResumePDF.jsx       # PDF document component (@react-pdf/renderer)

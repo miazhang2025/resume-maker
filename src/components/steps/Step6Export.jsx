@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 import ResumePDF from '../ResumePDF';
 import { generateCoverLetter } from '../../api/claude';
@@ -171,7 +171,7 @@ function ControlPanel({ themeColor, setThemeColor, pageSize, setPageSize, densit
       <div>
         <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">Page Density</p>
         <div className="flex gap-2">
-          {[['standard', 'Standard'], ['compact', 'Compact']].map(([val, label]) => (
+          {[['auto', 'Auto-fit'], ['standard', 'Standard'], ['compact', 'Compact']].map(([val, label]) => (
             <button
               key={val}
               onClick={() => setDensity(val)}
@@ -186,7 +186,11 @@ function ControlPanel({ themeColor, setThemeColor, pageSize, setPageSize, densit
           ))}
         </div>
         <p className="text-xs text-zinc-500 mt-1.5">
-          {density === 'compact' ? 'Smaller font, tighter spacing — fits more on one page.' : 'Standard 10pt font.'}
+          {density === 'compact'
+            ? 'Fixed 9pt font, tight spacing.'
+            : density === 'standard'
+              ? 'Fixed 10pt font.'
+              : 'Scales type and spacing to fill exactly one page.'}
         </p>
       </div>
 
@@ -224,7 +228,7 @@ function ControlPanel({ themeColor, setThemeColor, pageSize, setPageSize, densit
 export default function Step6Export({ onBack, resumeData, jdData, selectionData, polishData, skillsData }) {
   const [themeColor, setThemeColor] = useState('#1f2937');
   const [pageSize, setPageSize] = useState('a4');
-  const [density, setDensity] = useState('standard');
+  const [density, setDensity] = useState('auto');
   const [showCoverLetter, setShowCoverLetter] = useState(false);
 
   const pdfProps = { resumeData, selectionData, polishData, skillsData, themeColor, pageSize, density };

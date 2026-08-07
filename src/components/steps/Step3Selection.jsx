@@ -302,7 +302,7 @@ export default function Step3Selection({ onComplete, onBack, resumeData, jdData,
           </div>
         </div>
         <p className="text-xs text-zinc-500 mt-3">
-          Make sure <code className="bg-zinc-800 px-1 py-0.5 rounded">VITE_ANTHROPIC_API_KEY</code> is set in <code className="bg-zinc-800 px-1 py-0.5 rounded">.env.local</code>
+          Make sure <code className="bg-zinc-800 px-1 py-0.5 rounded">ANTHROPIC_API_KEY</code> is set in <code className="bg-zinc-800 px-1 py-0.5 rounded">.env.local</code>
         </p>
       </div>
     );
